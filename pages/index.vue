@@ -30,8 +30,20 @@ export default {
   components: {
     Logo
   },
+  // The head method sets head tag attributes
+  head () {
+    return {
+      title: 'Home Page',
+      meta: [
+        { name: 'twitter:title', content: this.post.title},
+        { name: 'twitter:description', content: this.post.content},
+        { name: 'twitter:image', content: 'https://i.imgur.com/UYP2umJ.png'},
+        { name: 'twitter:card', content: 'summary_large_image'}
+      ]
+    }
+  },
   computed: {
-    posts() {
+    posts () {
       return this.$store.state.posts.all;
     }
   }

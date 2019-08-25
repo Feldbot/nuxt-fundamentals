@@ -33,6 +33,18 @@
 
 <script>
 export default {
+  // The head method sets <head><title> to the post title, and all the meta data as well (here set for Twitter)
+  head () {
+    return {
+      title: this.post.title,
+      meta: [
+        { name: 'twitter:title', content: this.post.title},
+        { name: 'twitter:description', content: this.post.content},
+        { name: 'twitter:image', content: 'https://i.imgur.com/UYP2umJ.png'},
+        { name: 'twitter:card', content: 'summary_large_image'}
+      ]
+    }
+  },
   data () {
     // console.log(this.$route);
     return {
