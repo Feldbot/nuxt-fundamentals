@@ -4,6 +4,30 @@
       <h1 class="title">{{post.title}}</h1>
       <p>{{post.content}}</p>
     </article>
+    <aside>
+      <h3>Posts you might not enjoi</h3>
+      <ul>
+        <!-- Computed method below -->
+        <li v-for="related in relatedPosts">
+          <!-- Use nuxt-link instead of <a> tags, which cause the browser to reload, this is faster with no reload -->
+          <!-- <a :href="`/posts/${related.id}`">
+            {{related.title}}</a> -->
+
+          <!-- Link option 1: pass an object -->
+          <nuxt-link :to="{
+            name: 'posts-id',
+            params: { id: related.id }
+            }">
+            {{related.title}}
+          </nuxt-link>
+
+          <!-- Link option 2: pass route template literal -->
+          <!-- <nuxt-link :to="`/posts/${related.id}`">
+            {{related.title}}
+          </nuxt-link> -->
+        </li>
+      </ul>
+    </aside>
   </div>
 </template>
 
@@ -28,14 +52,23 @@ export default {
           id: 'shimp',
           title: 'Who is Shimp?',
           content: 'Shimp is All Is One! Or NONE!'
+        },
+        {
+          id: 'poot',
+          title: 'How is poot?',
+          content: 'Poot is toot-toot!'
         }
       ]
     }
   },
   computed: {
-    post () {
+    post() {
       // this.param is the data id prop above
       return this.posts.find(post => post.id === this.id)
+    },
+    // Return any posts except current param post
+    relatedPosts() {
+      return this.posts.filter(post => post.id !== this.id)
     }
   }
 }

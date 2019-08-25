@@ -1,7 +1,12 @@
 <template>
   <nav class="nav">
     <div class="logo">
+      <nuxt-link :to="{ name: 'index' }" class="logo text-lg">
+        Nuxt Fun-duh-mental-zzzz!
+      </nuxt-link>
+      <!-- Using nuxt-link for anchor tags is better
       <a href="#" class="logo text-lg">Nuxt Fun-damentals!</a>
+      -->
       <span class="subheader">A Vue School course</span>
     </div>
   </nav>
