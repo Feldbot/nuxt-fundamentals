@@ -34,7 +34,7 @@
 <script>
 export default {
   data () {
-    console.log(this.$route);
+    // console.log(this.$route);
     return {
       // id is pages/posts/_id.vue route which
       // dynamically resolves to URL param, e.g.,
@@ -42,33 +42,18 @@ export default {
       // In other words, the $route obj has
       // param.id = 'shimp' the URL parameter
       id: this.$route.params.id,
-      posts: [
-        {
-          id: 'balut',
-          title: 'What is Balut?',
-          content: 'Balut is not salad, which is delicious.'
-        },
-        {
-          id: 'shimp',
-          title: 'Who is Shimp?',
-          content: 'Shimp is All Is One! Or NONE!'
-        },
-        {
-          id: 'poot',
-          title: 'How is poot?',
-          content: 'Poot is toot-toot!'
-        }
-      ]
+      // posts: [] // now in Vuex store posts.js
     }
   },
   computed: {
     post() {
-      // this.param is the data id prop above
-      return this.posts.find(post => post.id === this.id)
+      // this.$store.state.posts.all from Vuex posts.js
+      // this.id is the data id prop above
+      return this.$store.state.posts.all.find(post => post.id === this.id)
     },
     // Return any posts except current param post
     relatedPosts() {
-      return this.posts.filter(post => post.id !== this.id)
+      return this.$store.state.posts.all.filter(post => post.id !== this.id)
     }
   }
 }
