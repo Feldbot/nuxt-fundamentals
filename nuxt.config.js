@@ -1,6 +1,14 @@
 
 export default {
   mode: 'universal',
+  // Need to specify which routes to generate
+  generate: {
+    routes: [
+      '/posts/balut',
+      '/posts/shimp',
+      '/posts/poot',
+    ]
+  },
   /*
   ** Headers of the page
   */
